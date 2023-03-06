@@ -1,0 +1,4 @@
+enum EnumerateCategoriesScaffold {
+  noCurvedBar,
+  curvedBar,
+}

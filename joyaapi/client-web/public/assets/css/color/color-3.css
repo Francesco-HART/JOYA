@@ -1,0 +1,364 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name:JOYA APP
+    Template URI: http://themes.pixelstrap.com/joya
+    Description: This is App Landing Page
+    Author: Pixelstrap
+    Author URI: https://themeforest.net/user/pixelstrap
+
+-----------------------------------------------------------------------------------*/
+.caption-img {
+  filter: hue-rotate(335deg);
+}
+
+.loader {
+  background-color: #14e296;
+}
+
+h1 {
+  color: #14e296;
+}
+
+.price-type h2 {
+  color: #14e296;
+}
+
+.home-two .slide-cap-desc {
+  color: #f1f1f1;
+}
+
+.navbar-light .default-nav .navbar-nav .nav-link.active {
+  color: #14e296;
+}
+.navbar-light.darkHeader .navbar-nav .nav-link.active {
+  color: #14e296 !important;
+}
+.navbar-light.darkHeader
+  .navbar-nav
+  .nav-item.dropdown
+  .dropdown-menu
+  .nav-link:hover {
+  color: #14e296;
+}
+
+.slide-cap-desc {
+  color: #f1f1f1;
+}
+
+.tap-top {
+  background: linear-gradient(to right, #1bee90, #14e296) !important;
+}
+
+.about-right {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%);
+}
+
+.address-bar {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%);
+}
+
+.team-block .team-social li a {
+  border: 1px solid #14e296;
+}
+.team-block .team-social li a:hover {
+  background-color: #14e296;
+  border: 1px solid #14e296;
+}
+
+.color-picker .settings-header {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+.color-picker .settings-header h3 {
+  color: white;
+}
+.color-picker .section {
+  border: 1px solid #14e296;
+}
+.color-picker a.handle {
+  border: 1px solid #14e296;
+  background: #14e296;
+}
+
+.navbar-brand img {
+  max-height: 4rem;
+}
+
+.home-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.home-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.home-circle3 img {
+  filter: hue-rotate(335deg);
+}
+
+.home-right img {
+  filter: hue-rotate(335deg);
+}
+
+.about-phone img {
+  filter: hue-rotate(335deg);
+}
+
+.feature-phone img {
+  filter: hue-rotate(335deg);
+}
+
+.about-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.about-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.feature-style .feature-icon img {
+  filter: hue-rotate(335deg);
+}
+
+.feature-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.feature-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.screenshot-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.screenshot-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.screenshot-circle3 img {
+  filter: hue-rotate(335deg);
+}
+
+.screenshot-carousel img {
+  filter: hue-rotate(335deg);
+}
+
+.team-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.team-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.team-circle3 img {
+  filter: hue-rotate(335deg);
+}
+
+.testi-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.testi-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.testi-circle3 img {
+  filter: hue-rotate(335deg);
+}
+
+.contact-right img {
+  filter: hue-rotate(335deg);
+}
+
+.contact-circle1 img {
+  filter: hue-rotate(335deg);
+}
+
+.contact-circle2 img {
+  filter: hue-rotate(335deg);
+}
+
+.animated-circle img {
+  filter: hue-rotate(335deg);
+}
+
+.footer-text img {
+  filter: hue-rotate(335deg);
+}
+
+.testimonial-text h3 {
+  color: #14e296;
+}
+
+.btn-custom.theme-color {
+  background-image: linear-gradient(
+    to right,
+    #14e296,
+    #1bee90,
+    #14e296,
+    #14e296
+  );
+}
+.btn-custom.theme-color:hover {
+  background-position: 100% 0;
+}
+
+#fp-nav ul li a.active {
+  border: 1px solid #14e296;
+}
+#fp-nav ul li a.active span {
+  background: #14e296 !important;
+}
+#fp-nav ul li a span {
+  background: #14e296 !important;
+}
+#fp-nav ul li:hover a.active span {
+  background: #14e296 !important;
+}
+
+.fp-slidesNav ul li a span {
+  background: #14e296 !important;
+}
+.fp-slidesNav ul li a.active span {
+  background: #14e296 !important;
+}
+.fp-slidesNav ul li:hover a.active span {
+  background: #14e296 !important;
+}
+
+.theme-nav .navbar-nav .active > .nav-link {
+  color: #14e296;
+}
+
+.home-style-two .navbar-nav .dropdown-menu .nav-link:hover {
+  color: #14e296 !important;
+}
+
+.three .navbar-nav .dropdown-menu .nav-link:hover {
+  color: #14e296 !important;
+}
+
+.abt-hover:hover .icon-hover {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%);
+}
+
+.icon-hover:hover {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%);
+  border: 1px solid #ff8fc0;
+}
+
+.team-carousel.owl-theme .owl-dots .owl-dot span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+.team-carousel.owl-theme .owl-dots .owl-dot.active span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+
+/* .slick-dots li button:before {
+    background: linear-gradient(to bottom, #21ecff 0, #2cc6ff 99%) !important; }  
+  
+
+.slick-dots li.slick-active button:before {
+  background: linear-gradient(to bottom, #21ecff 0, #2cc6ff 99%) !important; } */
+
+.blog-carousel.owl-theme .owl-dots .owl-dot span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+.blog-carousel.owl-theme .owl-dots .owl-dot.active span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+
+.testimonial-carousel.owl-theme .owl-dots .owl-dot span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+.testimonial-carousel.owl-theme .owl-dots .owl-dot.active span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+
+.price-carousel.owl-theme .owl-dots .owl-dot span {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 99%) !important;
+}
+
+.blog-pagin a.page-link {
+  color: #14e296;
+  border: 1px solid #eee;
+}
+.blog-pagin a.page-link:hover {
+  background-color: #14e296;
+}
+
+.page-item.active .page-link {
+  background-color: #14e296;
+}
+
+.tags .badge-theme {
+  background-color: #14e296;
+  color: white;
+}
+
+.blog-cat-detail ul li a:hover,
+.manual-down {
+  color: #14e296;
+}
+
+.price-block:hover .mrp h2 {
+  color: #14e296;
+}
+
+.authentication-form {
+  filter: hue-rotate(335deg);
+}
+
+.innerpage-decor img {
+  filter: hue-rotate(335deg);
+}
+
+.faq .card-header[aria-expanded="true"] a {
+  color: #14e296;
+}
+
+.review-box h5 {
+  color: #14e296;
+}
+
+@media (max-width: 768px) {
+  .home-two,
+  .home-three {
+    background-color: #14e296;
+  }
+}
+.theme-nav {
+  /*Dropdown css*/
+  /*dropdown css end*/
+}
+.theme-nav .nav-item:hover .nav-link {
+  color: #14e296;
+}
+.theme-nav .nav-item.dropdown .dropdown-menu .nav-item .nav-link.active {
+  color: #14e296 !important;
+}
+.theme-nav .nav-item.dropdown .dropdown-menu .nav-item .nav-link:hover {
+  color: #14e296 !important;
+  transition: all 0.3s ease;
+}
+.theme-nav.darkHeader .dropdown-menu .nav-item .nav-link.active {
+  color: #14e296;
+}
+.theme-nav .navbar-nav .active > .nav-link {
+  color: #14e296;
+}
+
+.rounded-dots .slick-dots .slick-active button:before {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 100%);
+  background: #14e296;
+}
+
+.rounded-dots .slick-dots button:before {
+  background: linear-gradient(to bottom, #1bee90 0, #14e296 100%);
+  background: #14e296;
+}
+
+.theme-nav .nav-item.dropdown .dropdown-menu .dropdown-item .nav-link:hover {
+  color: #14e296 !important;
+}

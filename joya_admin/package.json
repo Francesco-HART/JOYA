@@ -1,0 +1,29 @@
+{
+  "name": "joyaAdmin2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
+  },
+  "dependencies": {
+    "@pankod/refine-core": "^3.14.2",
+    "@pankod/refine-nextjs-router": "^3.14.2",
+    "next": "12.0.7",
+    "next-compose-plugins": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "@pankod/refine-antd": "^3.14.2",
+    "@pankod/refine-simple-rest": "^3.14.2",
+    "nookies": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.13",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/parser": "^4.9.1",
+    "typescript": "^4.1.3"
+  }
+}

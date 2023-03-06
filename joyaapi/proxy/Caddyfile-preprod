@@ -1,0 +1,5 @@
+lejeunedeveloppeur.fr {
+    reverse_proxy  client-web:3000
+    reverse_proxy /api/* api:5000
+  }         
+

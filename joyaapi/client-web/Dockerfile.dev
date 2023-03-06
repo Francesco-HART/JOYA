@@ -1,0 +1,13 @@
+FROM node:16.13.0-alpine
+
+WORKDIR '/app'
+
+RUN npm install -g npm@8.12.1
+COPY ./package*.json ./
+RUN npm install
+
+COPY ./ ./
+
+CMD [ "npm", "start" ]
+
+EXPOSE 3000

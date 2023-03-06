@@ -1,0 +1,28 @@
+FROM node:15.14-alpine
+
+WORKDIR '/app'
+COPY ./package*.json ./
+RUN npm install
+
+COPY ./ ./
+
+RUN npm run build
+
+ARG NODE_ENV=production
+
+ENV NODE_ENV=${NODE_ENV}
+
+ARG MONGO_URI
+ARG JWT_SECRET
+ARG COOKIE_SECRET
+ARG API_PORT
+
+
+ENV API_PORT=${API_PORT}
+ENV MONGO_URI=${MONGO_URI}
+ENV JWT_SECRET=${JWT_SECRET}
+ENV COOKIE_SECRET=${COOKIE_SECRET}
+
+
+CMD ["npm", "run", "start"]
+EXPOSE 5000

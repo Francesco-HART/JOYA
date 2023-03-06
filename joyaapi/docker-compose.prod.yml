@@ -1,0 +1,74 @@
+version: "3.4"
+
+services:
+  db:
+    container_name: "db"
+    image: registry.gitlab.com/teddy.villars1/joyaapi/mongodb:latest
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - joya_db:/data/db
+
+  api:
+    container_name: "api"
+    image: registry.gitlab.com/teddy.villars1/joyaapi/api:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "5"
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  client-web:
+    container_name: "client-web"
+    image: registry.gitlab.com/teddy.villars1/joyaapi/client:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "5"
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  proxy:
+    image: caddy:2-alpine
+    container_name: proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - client-web
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - /data/caddy/data:/data
+      - /data/caddy/config:/config
+
+  # proxy:
+  #   logging:
+  #     driver: none
+  #   stdin_open: true
+  #   container_name: "proxy"
+  #   depends_on:
+  #     - api
+  #   build:
+  #     context: ./proxy
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - /etc/ssl/certs/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt:ro
+  #     - /etc/ssl/private/nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key:ro
+volumes:
+  joya_db:
+    driver: local

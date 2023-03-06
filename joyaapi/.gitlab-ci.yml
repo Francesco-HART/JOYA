@@ -1,0 +1,108 @@
+image: gitlab/dind
+
+variables:
+  MONGO_URI: $MONGO_URI
+  COOKIE_SECRET: $COOKIE_SECRET
+  JWT_SECRET: $JWT_SECRET
+  API_PORT: $API_PORT
+  MONGO_INITDB_ROOT_USERNAME: $MONGO_INITDB_ROOT_USERNAME
+  MONGO_INITDB_ROOT_PASSWORD: $MONGO_INITDB_ROOT_PASSWORD
+  MONGO_INITDB_DATABASE: $MONGO_INITDB_DATABASE
+
+  REPOSITORY_URL: $REPOSITORY_URL
+
+  STAGE_SSH_PRIVATE_KEY: $STAGE_SSH_PRIVATE_KEY
+  PROD_DEPLOY_SERVER: $PROD_DEPLOY_SERVER
+
+  USER_GITLAB_EMAIL: $USER_GITLAB_EMAIL
+  USER_GITLAB_PASSWORD: $USER_GITLAB_PASSWORD
+
+  CI_REGISTRY_MONGODB: $CI_REGISTRY/teddy.villars1/joyaapi/mongodb
+  CI_REGISTRY_API: $CI_REGISTRY/teddy.villars1/joyaapi/api
+  CI_REGISTRY_CLIENT: $CI_REGISTRY/teddy.villars1/joyaapi/client
+
+stages:
+  - test
+  - build
+  - deploy
+
+services:
+  - mongo
+  - docker:dind
+
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - api/node_modules/
+    - client-web/node_modules/
+
+test-server:
+  image: node:15
+  stage: test
+  script:
+    - cd api
+    - npm install
+    - npm run test:cov
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+
+build-docker:
+  stage: build
+  script:
+    - >
+      docker build
+      -t $CI_REGISTRY_MONGODB:$CI_COMMIT_SHA
+      -t $CI_REGISTRY_MONGODB 
+      --build-arg MONGO_INITDB_ROOT_USERNAME=$MONGO_INITDB_ROOT_USERNAME 
+      --build-arg MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD 
+      --build-arg MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE
+      ./db
+    - >
+      docker build 
+      -t $CI_REGISTRY_API:$CI_COMMIT_SHA
+      -t $CI_REGISTRY_API:latest
+      --build-arg MONGO_URI=$MONGO_URI
+      --build-arg COOKIE_SECRET=$COOKIE_SECRET
+      --build-arg JWT_SECRET=$JWT_SECRET
+      --build-arg API_PORT=$API_PORT
+      ./api
+    # - >
+    #   docker build
+    #   -t $CI_REGISTRY_CLIENT:$CI_COMMIT_SHA
+    #   -t $CI_REGISTRY_CLIENT:latest
+    #   ./client-web
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $CI_REGISTRY_MONGODB
+    - docker push $CI_REGISTRY_API
+    # - docker push $CI_REGISTRY_CLIENT
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  retry: 2
+
+deploy:
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - cat ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh -o StrictHostKeyChecking=no $PREPROD_USER_NAME@$PREPROD_URL
+
+  script:
+    - scp -i ~/.ssh/id_rsa ./proxy/Caddyfile-preprod $PREPROD_USER_NAME@$PREPROD_URL:~/joya_api/Caddyfile
+    - scp -i ~/.ssh/id_rsa ./docker-compose.prod.yml $PREPROD_USER_NAME@$PREPROD_URL:~/joya_api/docker-compose.yml
+    - >
+      ssh -i ~/.ssh/id_rsa $PREPROD_USER_NAME@$PREPROD_URL 
+      "touch  ~/joya_api/gitlab-access.txt &&
+       echo "$CI_REGISTRY_PASSWORD" > ~/joya_api/gitlab-access.txt &&
+       cd ~/joya_api &&
+       cat ~/joya_api/gitlab-access.txt | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY &&
+       docker-compose pull &&
+       docker-compose up -d &&
+       rm -rf  ~/joya_api/gitlab-access.txt"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  retry: 2
+  environment:
+    name: staging
